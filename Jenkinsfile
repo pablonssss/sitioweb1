@@ -18,7 +18,7 @@ pipeline {
 	stage('Ejecutar Playbook de Ansible') {
             steps {
                 sh '''
-                ansible-playbook -i /home/ubuntu/inventory /home/ubuntu/install_webservers.yml"
+                ansible-playbook -i /home/ubuntu/inventory /home/ubuntu/install_webservers.yml
                  '''
                 
             }
