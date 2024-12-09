@@ -12,10 +12,15 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/pablonssss/sitioweb1.git'
             }
         }
-        stage('Building...') {
+	stage('Ejecutar Playbook de Ansible') {
             steps {
-                echo 'Building proyect...'
+                sshagent(['ansible-ssh-key']) {
+                    sh '''
+                    ssh ubuntu@192.168.64.3 "ansible-playbook -i /home/ubuntu/inventory /home/ubuntu/install_webservers.yml"
+                    '''
+                }
             }
+        }
         }
     }
     post {
