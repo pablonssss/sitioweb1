@@ -24,7 +24,7 @@ pipeline {
     }
     post {
         success {
-            echo 'Pipeline completado exitosamente.'
+            echo 'AHORA SI Pipeline completado exitosamente.'
         }
         failure {
             echo 'El Pipeline falló.'
