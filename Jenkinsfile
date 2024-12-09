@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent  {
+	label 'NodoAnsible'
+    }
+
     stages {
         stage('Preparanding...') {
             steps {
@@ -14,11 +17,10 @@ pipeline {
         }
 	stage('Ejecutar Playbook de Ansible') {
             steps {
-                sshagent(['ansible-ssh-key']) {
-                    sh '''
-                    ssh ubuntu@192.168.64.3 "ansible-playbook -i /home/ubuntu/inventory /home/ubuntu/install_webservers.yml"
-                    '''
-                }
+                sh '''
+                ansible-playbook -i /home/ubuntu/inventory /home/ubuntu/install_webservers.yml"
+                 '''
+                
             }
         }
     }
